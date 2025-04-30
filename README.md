@@ -22,7 +22,7 @@ academia-practice-nlp/
 ├── notebooks/                  # Jupyter notebooks
 ├── scripts/                    # Reusable Python scripts
 ├── requirements.txt            # Python dependencies
-├── .gitignore					 # Ignore large files and checkpoints
+├── .gitignore                  # Ignore large files and checkpoints
 └── README.md                   # Project description
 ```
 
