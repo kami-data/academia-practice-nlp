@@ -1,0 +1,12 @@
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore config and metadata folders
+.jupyter/
+
+# Ignore temporary system files
+.DS_Store
+Thumbs.db
+
+# Don't track giant data files
+data/merged_impact_case_studies.csv
