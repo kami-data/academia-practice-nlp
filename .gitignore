@@ -8,5 +8,9 @@
 .DS_Store
 Thumbs.db
 
-# Don't track giant data files
-data/merged_impact_case_studies.csv
+# Ignore all data files (but allow a README to stay)
+data/*
+!data/README.md
+
+# Ignore archived files
+archive/

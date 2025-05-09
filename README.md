@@ -17,13 +17,19 @@ This project uses Named Entity Recognition (NER) to extract non-academic organiz
 ## Project Structure
 ```
 academia-practice-nlp/
-├── data/                       # Input data (not tracked by Git)
-├── output/                     # Results from NER models
-├── notebooks/                  # Jupyter notebooks
-├── scripts/                    # Reusable Python scripts
-├── requirements.txt            # Python dependencies
-├── .gitignore                  # Ignore large files and checkpoints
-└── README.md                   # Project description
+├── data/ # Input data (not tracked by Git)
+├── output/ # Processed outputs, including NER and filtering results
+├── notebooks/ # Modular notebooks (01–05) for each stage of the pipeline
+│ ├── 01_data_preparation.ipynb
+│ ├── 02_ner_extraction.ipynb
+│ ├── 03_entity_analysis.ipynb
+│ ├── 04_entity_preprocessing.ipynb
+│ └── 05_entity_classification.ipynb
+├── archive/ # Full legacy notebook (not pushed to GitHub)
+├── scripts/ # Reusable Python scripts (planned or used)
+├── requirements.txt # Python dependencies
+├── .gitignore # Files and folders excluded from version control
+└── README.md # Project overview and usage instructions
 ```
 
 ## How to Run
