@@ -12,7 +12,7 @@ This project uses Named Entity Recognition (NER) to extract non-academic organiz
   - [`Davlan/xlm-roberta-base-finetuned-ner`](https://huggingface.co/Davlan/xlm-roberta-base-ner-hrl) via Hugging Face
 - Extracts and compares named entities of type `ORG`
 - Filters out academic institutions using keyword matching
-- Outputs lists of potential non-academic partners for further analysis
+- Outputs lists of potential non-academic partners for further analysis (in progress)
 
 ## Project Structure
 ```
@@ -32,23 +32,38 @@ academia-practice-nlp/
 └── README.md # Project overview and usage instructions
 ```
 
-## How to Run
+## Modular NLP Pipeline
 
-1. Clone this repo  
-2. Install dependencies:
+This project is divided into five Jupyter notebooks, each handling a specific stage of the workflow:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+| Notebook | Purpose |
+|----------|---------|
+| `01_data_preparation.ipynb` | Clean and structure raw Polish-language case study text |
+| `02_ner_extraction.ipynb`   | Extract named entities (`ORG`) using two NER models |
+| `03_entity_analysis.ipynb`  | Compare and evaluate entity extraction performance |
+| `04_entity_preprocessing.ipynb` | Normalize and clean entity names |
+| `05_entity_classification.ipynb` | Sample and label organization types for typology |
 
-3. Place your dataset in the `/data` folder  
-4. Open the main notebook:
 
-    ```
-    notebooks/ics_NER_extraction_PL.ipynb
-    ```
+## How to Run This Project
 
-5. Run all cells and review outputs in the `/output` folder.
+
+1. Clone the repository and install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Add your input dataset (CSV format) to the `data/` folder.
+
+3. Run each notebook in order:
+   - `01_data_preparation.ipynb`
+   - `02_ner_extraction.ipynb`
+   - `03_entity_analysis.ipynb`
+   - `04_entity_preprocessing.ipynb`
+   - `05_entity_classification.ipynb`
+
+4. Outputs are saved to the `output/` folder and can be used for further analysis or visualization.
+
 
 
 ---
