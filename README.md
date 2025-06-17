@@ -48,7 +48,7 @@ This project is divided into five Jupyter notebooks, each handling a specific st
 | `04_entity_preprocessing.ipynb` | Normalize and clean entity names |
 | `05_entity_classification.ipynb` | Sample and label organization types for typology |
 | `06_entities_categorized.ipynb` | Integrate manual annotations and finalize the labeled set |
-| `05_entity_classification.ipynb` | Train and validate a machine learning model to classify entity types |
+| `07_train_classifier.ipynb` | Train and validate a machine learning model to classify entity types |
 
 ## How to Run This Project
 
