@@ -10,9 +10,11 @@ This project uses Named Entity Recognition (NER) to extract non-academic organiz
 - Applies two NER models:
   - [`Stanza`](https://github.com/stanfordnlp/stanza) (Stanford NLP)
   - [`Davlan/xlm-roberta-base-finetuned-ner`](https://huggingface.co/Davlan/xlm-roberta-base-ner-hrl) via Hugging Face
-- Extracts and compares named entities of type `ORG`
-- Filters out academic institutions using keyword matching
-- Outputs lists of potential non-academic partners for further analysis (in progress)
+- Extracts named entities labeled as `ORG` (organizations)
+- Filters out academic institutions using curated keyword rules
+- Samples and manually annotates a ground truth dataset of non-academic entities
+- Trains a classifier (TF-IDF + Logistic Regression) to label organizational type
+- Applies the model to remaining unclassified entities (in progress)
 
 ## Project Structure
 ```
@@ -25,6 +27,8 @@ academia-practice-nlp/
 │ ├── 03_entity_analysis.ipynb
 │ ├── 04_entity_preprocessing.ipynb
 │ └── 05_entity_classification.ipynb
+│ └── 06_entities_categorized.ipynb
+│ └── 07_train_classifier.ipynb
 ├── archive/ # Full legacy notebook (not pushed to GitHub)
 ├── scripts/ # Reusable Python scripts (planned or used)
 ├── requirements.txt # Python dependencies
@@ -43,7 +47,8 @@ This project is divided into five Jupyter notebooks, each handling a specific st
 | `03_entity_analysis.ipynb`  | Compare and evaluate entity extraction performance |
 | `04_entity_preprocessing.ipynb` | Normalize and clean entity names |
 | `05_entity_classification.ipynb` | Sample and label organization types for typology |
-
+| `06_entities_categorized.ipynb` | Integrate manual annotations and finalize the labeled set |
+| `05_entity_classification.ipynb` | Train and validate a machine learning model to classify entity types |
 
 ## How to Run This Project
 
@@ -53,16 +58,13 @@ This project is divided into five Jupyter notebooks, each handling a specific st
    pip install -r requirements.txt
    ```
 
-2. Add your input dataset (CSV format) to the `data/` folder.
+2. Download the input dataset from the official RAD-on portal:  
+   [Opisy wpływu działalności naukowej na funkcjonowanie społeczeństwa i gospodarki](https://radon.nauka.gov.pl/dane/opisy-wplywu-dzialalnosci-naukowej-na-funkcjonowanie-spoleczenstwa-i-gospodarki)  
+   and place the CSV file into the `data/` folder.
 
-3. Run each notebook in order:
-   - `01_data_preparation.ipynb`
-   - `02_ner_extraction.ipynb`
-   - `03_entity_analysis.ipynb`
-   - `04_entity_preprocessing.ipynb`
-   - `05_entity_classification.ipynb`
+3. Run each notebook in order, following the modular structure.
 
-4. Outputs are saved to the `output/` folder and can be used for further analysis or visualization.
+4. All outputs (NER results, labeled entities, trained models) will be saved to the output/ folder.
 
 
 
