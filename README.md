@@ -11,10 +11,10 @@ This project uses Named Entity Recognition (NER) to extract non-academic organiz
   - [`Stanza`](https://github.com/stanfordnlp/stanza) (Stanford NLP)
   - [`Davlan/xlm-roberta-base-finetuned-ner`](https://huggingface.co/Davlan/xlm-roberta-base-ner-hrl) via Hugging Face
 - Extracts named entities labeled as `ORG` (organizations)
-- Filters out academic institutions using curated keyword rules
-- Samples and manually annotates a ground truth dataset of non-academic entities
-- Trains a classifier (TF-IDF + Logistic Regression) to label organizational type
-- Applies the model to remaining unclassified entities (in progress)
+- Filters out academic institutions using keyword-based rules
+- Identifies and manually annotates a shared subset of entities (“common entities”) extracted by both models
+- Develops rule-based and ML classification logic on this ground-truth set
+- Applies classification rules to remaining entities (in progress)
 
 ## Project Structure
 ```
@@ -25,10 +25,10 @@ academia-practice-nlp/
 │ ├── 01_data_preparation.ipynb
 │ ├── 02_ner_extraction.ipynb
 │ ├── 03_entity_analysis.ipynb
-│ ├── 04_entity_preprocessing.ipynb
-│ └── 05_entity_classification.ipynb
-│ └── 06_entities_categorized.ipynb
-│ └── 07_train_classifier.ipynb
+│ ├── 04_common_entity_preprocessing.ipynb
+│ └── 05_common_entity_classification.ipynb
+│ └── 06_common_entities_categorized.ipynb
+│ └── 07_apply_rules_to_stanza_entities.ipynb
 ├── archive/ # Full legacy notebook (not pushed to GitHub)
 ├── scripts/ # Reusable Python scripts (planned or used)
 ├── requirements.txt # Python dependencies
@@ -45,10 +45,10 @@ This project is divided into five Jupyter notebooks, each handling a specific st
 | `01_data_preparation.ipynb` | Clean and structure raw Polish-language case study text |
 | `02_ner_extraction.ipynb`   | Extract named entities (`ORG`) using two NER models |
 | `03_entity_analysis.ipynb`  | Compare and evaluate entity extraction performance |
-| `04_entity_preprocessing.ipynb` | Normalize and clean entity names |
-| `05_entity_classification.ipynb` | Sample and label organization types for typology |
-| `06_entities_categorized.ipynb` | Integrate manual annotations and finalize the labeled set |
-| `07_train_classifier.ipynb` | Train and validate a machine learning model to classify entity types |
+| `04_common_entity_preprocessing.ipynb` | Normalize and clean common entity names |
+| `05_common_entity_classification.ipynb` | Sample and label organization types for typology |
+| `06_common_entities_categorized.ipynb` | Integrate manual annotations and finalize the labeled set |
+| `07_apply_rules_to_stanza_entities.ipynb` | Extend classification logic to Stanza-only entities |
 
 ## How to Run This Project
 
@@ -73,7 +73,8 @@ This project is divided into five Jupyter notebooks, each handling a specific st
 ## Author
 
 **Kamila Lewandowska**  
-
+University of Warsaw / EUROREG / Science Studies Laboratory
+Coordinator of the OPUS-LAP Practice-based Research Project
 
 ---
 
